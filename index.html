@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="stil.css">
+<head>
+	<meta charset="UTF-8">
+	<title>vigore</title>
+</head>
+	<canvas id="q"></canvas>
+	<div class="middle">
+		<div class="bar bar1"><span>-</span></div>
+		<div class="bar bar2"><span>V</span></div>
+        <div class="bar bar3"><span>&nbsp;I</span></div>
+        <div class="bar bar4"><span>G</span></div>
+        <div class="bar  bar5"><span>O</span></div>
+        <div class="bar bar6"><span>R</span></div>
+        <div class="bar bar8"><span>E</span></div>
+        <div class="bar bar9"><span>-</span></div>
+
+	</div>
+	
+
+	<script type="text/javascript">
+		var s = window.screen;
+		var width = q.width = s.width;
+		var height = q.height = s.height;
+		var letters = Array(256).join(1).split('');
+
+		var draw = function () {
+			q.getContext('2d').fillStyle='rgba(0,0,0,.05)';
+			q.getContext('2d').fillRect(0,0,width,height);
+			q.getContext('2d').fillStyle='red';
+			letters.map(function(y_pos, index){
+				text = String.fromCharCode(65+Math.random()*33);
+				x_pos = index * 10;
+				q.getContext('2d').fillText(text, x_pos, y_pos);
+				letters[index] = (y_pos > 758 + Math.random() * 1e4) ? 0 : y_pos + 10;
+			});
+		};
+		setInterval(draw, 33);
+	</script>
+</body>
+</html>
